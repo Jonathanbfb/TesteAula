@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia e Inovação em Saúde</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variáveis e Configurações Globais */
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --secondary: #00b4d8;
+            --accent: #20c997;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Cabeçalho */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .btn-nav:hover {
+            background: var(--primary-dark);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Seções Gerais */
+        .section {
+            padding: 90px 0 70px;
+        }
+
+        .bg-light {
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: var(--white);
+            width: 100%;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebd58;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 90px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e1effe 100%);
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,86,179,0.15);
+        }
+
+        /* Sobre */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+
+        .about-card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .info-box i {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .info-box h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .info-box p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Inovação (Cards) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,86,179,0.1);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Objetivos */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .obj-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .obj-box h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .obj-box p, .obj-box li {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .obj-box ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+
+        /* Galeria */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        /* Contato */
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 4px;
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        .privacy-notice {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-info p, .footer-contact p, .footer-links a {
+            color: #adb5bd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #adb5bd;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 75px);
+                background: var(--white);
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transition: var(--transition);
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .contact-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho e Navegação -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#inicio" class="logo">
+                <i class="fa-solid fa-heart-pulse"></i> <span>InovaSaúde</span>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre o Projeto</a></li>
+                    <li><a href="#inovacao">Inovação</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato" class="btn-nav">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Principal — Hero -->
+        <section id="inicio" class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>TECNOLOGIA E INOVAÇÃO EM SAÚDE</h1>
+                    <p>Como a tecnologia pode contribuir para a prevenção de doenças, a melhoria do atendimento, a ampliação do acesso aos serviços de saúde e a qualidade de vida das pessoas.</p>
+                    <div class="hero-buttons">
+                        <a href="#sobre" class="btn btn-primary">Conheça o Projeto</a>
+                        <a href="#contato" class="btn btn-outline">Entre em Contato</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/hero-health.jpg" alt="Profissionais de saúde utilizando tecnologia digital moderna">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre o Projeto -->
+        <section id="sobre" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Sobre o Projeto</h2>
+                    <p>Conheça nossa origem, motivação e compromisso com a saúde digital</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Transformando o Futuro do Cuidado</h3>
+                        <p>Este projeto institucional nasce da necessidade de integrar soluções tecnológicas avançadas ao ecossistema de saúde, promovendo um atendimento mais ágil, seguro e humanizado.</p>
+                        <p><strong>Contexto e Motivação:</strong> Buscamos aproximar pacientes, profissionais e gestores por meio de ferramentas digitais acessíveis, transparentes e focadas na melhoria contínua dos processos clínicos e de gestão.</p>
+                        <p><strong>Público-alvo:</strong> Profissionais da saúde, pesquisadores, gestores públicos e privados, estudantes e cidadãos interessados em inovação em saúde.</p>
+                    </div>
+                    <div class="about-card-info">
+                        <div class="info-box">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h4>Inovação Responsiva</h4>
+                            <p>Compromisso com a ética, segurança de dados e rigor científico.</p>
+                        </div>
+                        <div class="info-box">
+                            <i class="fa-solid fa-users"></i>
+                            <h4>Foco Humano</h4>
+                            <p>A tecnologia como meio para valorizar a relação entre médico e paciente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologia e Inovação -->
+        <section id="inovacao" class="section bg-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Tecnologia e Inovação</h2>
+                    <p>Possibilidades de aplicação tecnológica propostas em nossa iniciativa</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+                        <h3>Telemedicina</h3>
+                        <p>Atendimento digital e remoto para ampliar o acesso à orientação médica especializada com comodidade e segurança.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3>Inteligência Artificial</h3>
+                        <p>Apoio à decisão clínica, análise preditiva e otimização de diagnósticos por meio de algoritmos avançados.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-file-medical"></i></div>
+                        <h3>Prontuários Eletrônicos</h3>
+                        <p>Gestão integrada e segura de informações clínicas para histórico unificado do paciente.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3>Monitoramento Remoto</h3>
+                        <p>Acompanhamento contínuo de sinais vitais por dispositivos conectados para prevenção proativa.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>Educação em Saúde</h3>
+                        <p>Plataformas interativas voltadas à disseminação de conhecimento preventivo e hábitos saudáveis.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Análise de Dados</h3>
+                        <p>Processamento de grandes volumes de dados (Big Data) em saúde para planejar políticas públicas eficazes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objetivos e Benefícios -->
+        <section id="objetivos" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Objetivos e Benefícios</h2>
+                    <p>Nossas metas estratégicas e os impactos esperados para a sociedade</p>
+                </div>
+                <div class="objectives-grid">
+                    <div class="obj-box">
+                        <h3><i class="fa-solid fa-bullseye"></i> Objetivo Geral</h3>
+                        <p>Fomentar o ecossistema de inovação em saúde através de ferramentas digitais modernas, promovendo eficiência operacional, ampliação do acesso e melhoria na qualidade de vida dos cidadãos.</p>
+                    </div>
+                    <div class="obj-box">
+                        <h3><i class="fa-solid fa-list-check"></i> Objetivos Específicos</h3>
+                        <ul>
+                            <li>Mapear demandas e gargalos nos serviços tradicionais de atendimento.</li>
+                            <li>Propor soluções tecnológicas escaláveis e adaptadas à realidade local.</li>
+                            <li>Estimular a capacitação digital de equipes multiprofissionais.</li>
+                        </ul>
+                    </div>
+                    <div class="obj-box">
+                        <h3><i class="fa-solid fa-star"></i> Benefícios Esperados</h3>
+                        <ul>
+                            <li>Ampliação do acesso a serviços de saúde especializados.</li>
+                            <li>Maior agilidade e assertividade nos processos clínicos.</li>
+                            <li>Humanização do atendimento mediada por recursos tecnológicos eficientes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de Imagens -->
+        <section id="galeria" class="section bg-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Galeria</h2>
+                    <p>Registros visuais e conceitos de saúde digital e inovação</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/images/telehealth.jpg" alt="Consulta médica remota por telemedicina">
+                        <div class="gallery-caption">Telemedicina e Atendimento Remoto</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/ai-health.jpg" alt="Análise de dados de saúde em telas digitais">
+                        <div class="gallery-caption">Inteligência Artificial e Análise de Dados</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/monitoring.jpg" alt="Equipamentos modernos de monitoramento hospitalar">
+                        <div class="gallery-caption">Tecnologia Médica Avançada</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Contato Integrado ao WhatsApp -->
+        <section id="contato" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contato</h2>
+                    <p>Fale conosco através do formulário integrado ao WhatsApp</p>
+                </div>
+                <div class="contact-wrapper">
+                    <form id="whatsapp-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefone">Telefone / WhatsApp</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(92) 99999-9999">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail (Opcional)</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="instituicao">Instituição ou Organização (Opcional)</label>
+                            <input type="text" id="instituicao" name="instituicao" placeholder="Empresa, Universidade ou Órgão">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto do Contato *</label>
+                            <select id="assunto" name="assunto" required>
+                                <option value="">Selecione o assunto</option>
+                                <option value="Parceria">Parceria Institucional</option>
+                                <option value="Dúvida sobre o Projeto">Dúvida sobre o Projeto</option>
+                                <option value="Sugestão">Sugestão de Melhoria</option>
+                                <option value="Outro">Outro Assunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="consentimento" required>
+                            <label for="consentimento">Concordo em utilizar meus dados preenchidos para iniciar a conversa via WhatsApp.</label>
+                        </div>
+                        
+                        <div class="privacy-notice">
+                            <p><i class="fa-solid fa-lock"></i> <strong>Nota de Privacidade:</strong> Os dados inseridos serão utilizados exclusivamente para preparar a mensagem de contato. Evite solicitar informações clínicas, diagnósticos, exames ou outros dados sensíveis de saúde neste formulário público.</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Enviar mensagem pelo WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h3>Tecnologia e Inovação em Saúde</h3>
+                <p>Iniciativa dedicada a promover a transformação digital no setor da saúde com foco na qualidade de vida e acessibilidade.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#inovacao">Inovação</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contato Direto</h4>
+                <p><i class="fa-solid fa-phone"></i> +55 (92) 99335-1939</p>
+                <p><i class="fa-solid fa-shield-halved"></i> Aviso de Privacidade: Dados seguros e protegidos.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Tecnologia e Inovação em Saúde. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Responsivo para Dispositivos Móveis
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Atualizar ano automaticamente no rodapé
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Validação e Integração do Formulário com o WhatsApp
+        const whatsappForm = document.getElementById('whatsapp-form');
+
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Obter valores dos campos
+            const nome = document.getElementById('nome').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const instituicao = document.getElementById('instituicao').value.trim();
+            const assunto = document.getElementById('assunto').value;
+            const mensagem = document.getElementById('mensagem').value.trim();
+            const consentimento = document.getElementById('consentimento').checked;
+
+            // Validação básica
+            if (!nome || !assunto || !mensagem) {
+                alert('Por favor, preencha todos os campos obrigatórios (*).');
+                return;
+            }
+
+            if (!consentimento) {
+                alert('Você precisa concordar com o termo de privacidade para continuar.');
+                return;
+            }
+
+            // Montar texto da mensagem para o WhatsApp
+            let textoMensagem = `*Contato via Site - Tecnologia e Inovação em Saúde*\n\n`;
+            textoMensagem += `*Nome:* ${nome}\n`;
+            if (telefone) textoMensagem += `*Telefone:* ${telefone}\n`;
+            if (email) textoMensagem += `*E-mail:* ${email}\n`;
+            if (instituicao) textoMensagem += `*Instituição:* ${instituicao}\n`;
+            textoMensagem += `*Assunto:* ${assunto}\n\n`;
+            textoMensagem += `*Mensagem:*\n${mensagem}`;
+
+            // Codificar a mensagem para URL
+            const mensagemCodificada = encodeURIComponent(textoMensagem);
+            
+            // Número de destino solicitado: +55 92 99335-1939
+            const numeroDestino = '5592993351939';
+            
+            // Abrir o link do WhatsApp
+            const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${mensagemCodificada}`;
+            
+            window.open(urlWhatsApp, '_blank');
+        });
+    </script>
+</body>
+</html>
