@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b51216">
+    <meta name="description" content="Tecnologia e Inovação em Saúde: soluções digitais, inteligência artificial, telemedicina e transformação do cuidado.">
     <title>Tecnologia e Inovação em Saúde</title>
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome para ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* Variáveis e Configurações Globais */
         :root {
-            --primary: #0056b3;
-            --primary-dark: #003d82;
-            --secondary: #00b4d8;
-            --accent: #20c997;
-            --dark: #212529;
-            --light: #f8f9fa;
-            --gray: #6c757d;
+            --primary: #c1121f;
+            --primary-dark: #780000;
+            --secondary: #ffb703;
+            --accent: #ff5a1f;
+            --dark: #211313;
+            --light: #fff7ed;
+            --gray: #706363;
             --white: #ffffff;
+            --fire-gradient: linear-gradient(
+                0deg,
+                #ff2600 0%,
+                #ff6500 25%,
+                #ffb000 55%,
+                #fff3a3 80%,
+                #ffffff 100%
+            );
             --transition: all 0.3s ease;
         }
 
@@ -33,16 +41,14 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 85px;
             font-family: 'Inter', sans-serif;
             color: var(--dark);
-            background-color: var(--white);
+            background: var(--white);
         }
 
-        .container {
-            width: 100%;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
+        body {
+            overflow-x: hidden;
         }
 
         a {
@@ -60,14 +66,79 @@
             display: block;
         }
 
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Efeito de texto em chamas */
+        .fire-text {
+            display: inline-block;
+            color: #ff6a00;
+            background: var(--fire-gradient);
+            background-size: 100% 220%;
+            background-position: 50% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(255, 75, 0, 0.3));
+            animation: fire-glow 1.7s ease-in-out infinite alternate;
+        }
+
+        @keyframes fire-glow {
+            from {
+                background-position: 50% 100%;
+                filter: drop-shadow(0 0 3px rgba(255, 80, 0, 0.25));
+            }
+            to {
+                background-position: 50% 0%;
+                filter: drop-shadow(0 0 10px rgba(255, 120, 0, 0.7));
+            }
+        }
+
+        .fire-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 15px;
+            border: 1px solid rgba(255, 183, 3, 0.6);
+            border-radius: 50px;
+            background: rgba(255, 183, 3, 0.13);
+            color: #ffe3a0;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .fire-badge i {
+            color: var(--secondary);
+            animation: flame-pulse 1s infinite alternate;
+        }
+
+        @keyframes flame-pulse {
+            from { transform: scale(0.9); }
+            to { transform: scale(1.2); }
+        }
+
         /* Cabeçalho */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(120, 0, 0, 0.1);
+            border-bottom: 2px solid var(--secondary);
             z-index: 1000;
         }
 
@@ -75,43 +146,51 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 75px;
+            min-height: 75px;
         }
 
         .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 900;
             color: var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
+        .logo i {
+            color: var(--accent);
+            font-size: 1.6rem;
+        }
+
         .nav-menu ul {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 22px;
         }
 
         .nav-menu a {
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.92rem;
             color: var(--dark);
             transition: var(--transition);
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
+        .nav-menu a:hover,
+        .nav-menu a.active {
             color: var(--primary);
         }
 
-        .btn-nav {
+        .nav-menu .btn-nav {
             background: var(--primary);
-            color: var(--white) !important;
-            padding: 8px 16px;
-            border-radius: 4px;
+            color: var(--white);
+            padding: 10px 17px;
+            border-radius: 6px;
         }
 
-        .btn-nav:hover {
+        .nav-menu .btn-nav:hover {
             background: var(--primary-dark);
+            color: var(--secondary);
         }
 
         .menu-toggle {
@@ -119,90 +198,139 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--primary);
+            background: transparent;
+            border: 0;
+            padding: 8px;
         }
 
-        /* Seções Gerais */
+        /* Seções */
         .section {
-            padding: 90px 0 70px;
+            padding: 90px 0 75px;
         }
 
         .bg-light {
-            background-color: var(--light);
+            background: var(--light);
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 48px;
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 800;
         }
 
         .section-title p {
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .section-title .title-line {
+            display: block;
+            width: 75px;
+            height: 4px;
+            border-radius: 4px;
+            margin: 17px auto 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         /* Botões */
         .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 23px;
+            border-radius: 7px;
+            font-weight: 700;
             transition: var(--transition);
             cursor: pointer;
-            border: none;
+            border: 2px solid transparent;
+            text-align: center;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #f04424);
             color: var(--white);
+            box-shadow: 0 5px 15px rgba(193, 18, 31, 0.22);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 9px 24px rgba(193, 18, 31, 0.3);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border-color: var(--secondary);
+            color: var(--primary-dark);
         }
 
         .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
+            background: var(--secondary);
+            color: var(--dark);
         }
 
         .btn-whatsapp {
-            background: #25d366;
+            background: #168a47;
             color: var(--white);
             width: 100%;
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.05rem;
         }
 
         .btn-whatsapp:hover {
-            background: #1ebd58;
+            background: #0d6c35;
+            transform: translateY(-2px);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 150px 0 90px;
-            background: linear-gradient(135deg, #f0f7ff 0%, #e1effe 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 155px 0 100px;
+            color: var(--white);
+            background:
+                radial-gradient(ellipse at 15% 90%, rgba(255, 80, 0, 0.25), transparent 38%),
+                radial-gradient(ellipse at 90% 10%, rgba(255, 183, 3, 0.18), transparent 35%),
+                linear-gradient(130deg, #350505 0%, #850909 52%, #c1121f 100%);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(255, 183, 3, 0.2);
+            top: -160px;
+            right: -80px;
+        }
+
+        .hero::after {
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            bottom: -120px;
+            left: 20%;
         }
 
         .hero-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
+            gap: 45px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
@@ -210,29 +338,53 @@
         }
 
         .hero-content h1 {
-            font-size: 2.8rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 22px;
+            color: var(--white);
         }
 
         .hero-content p {
-            font-size: 1.15rem;
-            color: var(--gray);
+            font-size: 1.08rem;
+            color: #ffe9df;
             margin-bottom: 30px;
-            line-height: 1.6;
+            line-height: 1.8;
+            max-width: 600px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero .btn-primary {
+            background: linear-gradient(135deg, #ffb703, #ff6a00);
+            color: #401000;
+        }
+
+        .hero .btn-outline {
+            border-color: #ffd166;
+            color: var(--white);
+        }
+
+        .hero .btn-outline:hover {
+            color: var(--dark);
         }
 
         .hero-image {
             flex: 1;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,86,179,0.15);
+            border: 2px solid rgba(255, 183, 3, 0.65);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image img {
+            width: 100%;
+            min-height: 300px;
+            object-fit: cover;
         }
 
         /* Sobre */
@@ -244,15 +396,19 @@
         }
 
         .about-text h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .about-text p {
-            margin-bottom: 15px;
-            line-height: 1.6;
+            margin-bottom: 16px;
+            line-height: 1.8;
             color: var(--gray);
+        }
+
+        .about-text strong {
+            color: var(--primary-dark);
         }
 
         .about-card-info {
@@ -263,94 +419,144 @@
 
         .info-box {
             background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--secondary);
+            padding: 23px;
+            border-radius: 10px;
+            box-shadow: 0 5px 18px rgba(100, 0, 0, 0.07);
+            border-left: 5px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .info-box:hover {
+            transform: translateX(5px);
+            border-left-color: var(--primary);
         }
 
         .info-box i {
             font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
+            color: var(--primary);
+            margin-bottom: 12px;
         }
 
         .info-box h4 {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-size: 1.1rem;
         }
 
         .info-box p {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--gray);
+            line-height: 1.6;
         }
 
-        /* Inovação (Cards) */
+        /* Inovação */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
         }
 
         .card {
+            position: relative;
+            overflow: hidden;
             background: var(--white);
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            border-bottom: 4px solid var(--secondary);
+            box-shadow: 0 5px 20px rgba(80, 0, 0, 0.06);
             transition: var(--transition);
         }
 
+        .card::before {
+            content: "";
+            position: absolute;
+            height: 4px;
+            width: 0;
+            left: 0;
+            bottom: 0;
+            background: var(--primary);
+            transition: width 0.35s ease;
+        }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,86,179,0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(150, 0, 0, 0.12);
+        }
+
+        .card:hover::before {
+            width: 100%;
         }
 
         .card-icon {
-            font-size: 2.2rem;
-            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 62px;
+            height: 62px;
+            border-radius: 14px;
+            background: #fff0df;
+            font-size: 1.8rem;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
         .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
             color: var(--primary-dark);
         }
 
         .card p {
             color: var(--gray);
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.7;
         }
 
         /* Objetivos */
         .objectives-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
         }
 
         .obj-box {
             background: var(--white);
-            padding: 30px;
+            padding: 28px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary);
+            box-shadow: 0 5px 18px rgba(80, 0, 0, 0.06);
+            border-top: 5px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .obj-box:nth-child(2) {
+            border-top-color: var(--secondary);
+        }
+
+        .obj-box:nth-child(3) {
+            border-top-color: var(--accent);
+        }
+
+        .obj-box:hover {
+            transform: translateY(-4px);
         }
 
         .obj-box h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .obj-box p, .obj-box li {
+        .obj-box h3 i {
+            color: var(--accent);
+        }
+
+        .obj-box p,
+        .obj-box li {
             color: var(--gray);
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .obj-box ul {
@@ -358,47 +564,78 @@
             list-style: disc;
         }
 
+        .obj-box li::marker {
+            color: var(--accent);
+        }
+
         /* Galeria */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .gallery-item {
             background: var(--white);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 18px rgba(80, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
         }
 
         .gallery-item img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.5s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .gallery-caption {
-            padding: 15px;
-            font-weight: 600;
+            padding: 18px 15px;
+            font-weight: 700;
             text-align: center;
-            color: var(--dark);
+            color: var(--primary-dark);
             font-size: 0.95rem;
+            border-top: 3px solid var(--secondary);
+        }
+
+        /* Faixa de destaque */
+        .highlight-band {
+            padding: 45px 20px;
+            text-align: center;
+            color: var(--white);
+            background: linear-gradient(110deg, #790000, #c1121f, #ed4b16);
+        }
+
+        .highlight-band h2 {
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
+            margin-bottom: 12px;
+        }
+
+        .highlight-band p {
+            color: #ffe9d0;
+            line-height: 1.8;
+            max-width: 760px;
+            margin: 0 auto;
         }
 
         /* Contato */
         .contact-wrapper {
-            max-width: 700px;
+            max-width: 760px;
             margin: 0 auto;
             background: var(--white);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 38px;
+            border-radius: 14px;
+            border-top: 5px solid var(--primary);
+            box-shadow: 0 10px 35px rgba(100, 0, 0, 0.09);
         }
 
         .contact-form .form-group {
@@ -414,28 +651,34 @@
         .contact-form label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 0.94rem;
         }
 
         .contact-form input,
         .contact-form select,
         .contact-form textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 6px;
+            padding: 13px;
+            border: 1px solid #dfd1cc;
+            border-radius: 7px;
             font-family: inherit;
             font-size: 1rem;
+            background: #fffdfa;
+            color: var(--dark);
             transition: var(--transition);
         }
 
         .contact-form input:focus,
         .contact-form select:focus,
         .contact-form textarea:focus {
-            outline: none;
+            outline: 2px solid transparent;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+            box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.12);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
         }
 
         .checkbox-group {
@@ -446,53 +689,66 @@
 
         .checkbox-group input {
             width: auto;
-            margin-top: 4px;
+            margin-top: 5px;
+            accent-color: var(--primary);
         }
 
         .checkbox-group label {
             font-size: 0.9rem;
             color: var(--gray);
             margin-bottom: 0;
+            line-height: 1.6;
         }
 
         .privacy-notice {
-            background: #e9ecef;
-            padding: 15px;
+            background: #fff5e5;
+            border-left: 4px solid var(--secondary);
+            padding: 16px;
             border-radius: 6px;
             font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.5;
+            color: #66513b;
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .privacy-notice i {
+            color: var(--primary);
         }
 
         /* Rodapé */
         footer {
-            background: var(--primary-dark);
+            background: linear-gradient(135deg, #320000, #740606);
             color: var(--white);
-            padding: 60px 0 20px;
+            padding: 55px 0 20px;
+            border-top: 4px solid var(--secondary);
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: 2fr 1fr 1.5fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 35px;
+            margin-bottom: 35px;
         }
 
         .footer-info h3 {
             margin-bottom: 15px;
             font-size: 1.2rem;
+            color: #ffd166;
         }
 
-        .footer-info p, .footer-contact p, .footer-links a {
-            color: #adb5bd;
+        .footer-info p,
+        .footer-contact p,
+        .footer-links a {
+            color: #f1d9d5;
             font-size: 0.9rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        .footer-links h4, .footer-contact h4 {
+        .footer-links h4,
+        .footer-contact h4 {
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            color: #ffd166;
         }
 
         .footer-links ul li {
@@ -500,15 +756,32 @@
         }
 
         .footer-links a:hover {
-            color: var(--white);
+            color: var(--secondary);
+        }
+
+        .footer-contact p {
+            margin-bottom: 8px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary);
+            margin-right: 6px;
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             font-size: 0.85rem;
-            color: #adb5bd;
+            color: #e8c8c2;
+            line-height: 1.7;
+        }
+
+        /* Acessibilidade */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--secondary);
+            outline-offset: 4px;
         }
 
         /* Responsividade */
@@ -517,57 +790,153 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .hero-buttons {
                 justify-content: center;
             }
+
+            .hero-image {
+                width: 100%;
+                max-width: 650px;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
             }
+
+            .about-card-info {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .footer-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 75px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 75px);
-                background: var(--white);
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-                transition: var(--transition);
+            .nav-container {
+                min-height: 70px;
             }
-            .nav-menu.active {
-                left: 0;
+
+            .logo {
+                font-size: 1.05rem;
             }
-            .nav-menu ul {
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-            }
+
             .menu-toggle {
                 display: block;
             }
-            .contact-form .form-row {
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100dvh - 70px);
+                overflow-y: auto;
+                background: var(--white);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 20px;
+            }
+
+            .nav-menu li {
+                text-align: center;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+            }
+
+            .nav-menu .btn-nav {
+                margin-top: 8px;
+            }
+
+            .hero {
+                padding: 125px 0 70px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-image img {
+                min-height: 220px;
+            }
+
+            .section {
+                padding: 70px 0 55px;
+            }
+
+            .cards-grid,
+            .objectives-grid,
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            .hero-content h1 {
-                font-size: 2.2rem;
+
+            .about-card-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                padding: 24px 18px;
+            }
+
+            .contact-form .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        /* Respeitar preferência por movimento reduzido */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
-<body>
 
-    <!-- Cabeçalho e Navegação -->
+<body>
     <header id="header">
         <div class="container nav-container">
-            <a href="#inicio" class="logo">
-                <i class="fa-solid fa-heart-pulse"></i> <span>InovaSaúde</span>
+            <a href="#inicio" class="logo" aria-label="InovaSaúde - página inicial">
+                <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                <span>InovaSaúde</span>
             </a>
-            <nav class="nav-menu">
+
+            <nav class="nav-menu" id="nav-menu" aria-label="Menu principal">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#sobre">Sobre o Projeto</a></li>
@@ -577,210 +946,372 @@
                     <li><a href="#contato" class="btn-nav">Contato</a></li>
                 </ul>
             </nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+
+            <button
+                class="menu-toggle"
+                id="mobile-menu"
+                type="button"
+                aria-label="Abrir menu"
+                aria-controls="nav-menu"
+                aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
     <main>
-        <!-- Seção Principal — Hero -->
+        <!-- Apresentação -->
         <section id="inicio" class="hero">
             <div class="container hero-container">
                 <div class="hero-content">
-                    <h1>TECNOLOGIA E INOVAÇÃO EM SAÚDE</h1>
-                    <p>Como a tecnologia pode contribuir para a prevenção de doenças, a melhoria do atendimento, a ampliação do acesso aos serviços de saúde e a qualidade de vida das pessoas.</p>
+                    <div class="fire-badge">
+                        <i class="fa-solid fa-fire" aria-hidden="true"></i>
+                        INOVAÇÃO QUE TRANSFORMA
+                    </div>
+
+                    <h1>
+                        TECNOLOGIA E
+                        <span class="fire-text">INOVAÇÃO</span>
+                        EM SAÚDE
+                    </h1>
+
+                    <p>
+                        Conectando ciência, tecnologia e cuidado humano para
+                        explorar novas possibilidades na prevenção de doenças,
+                        no acesso aos serviços de saúde e na qualidade de vida.
+                    </p>
+
                     <div class="hero-buttons">
-                        <a href="#sobre" class="btn btn-primary">Conheça o Projeto</a>
-                        <a href="#contato" class="btn btn-outline">Entre em Contato</a>
+                        <a href="#sobre" class="btn btn-primary">
+                            <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                            Conheça o Projeto
+                        </a>
+                        <a href="#contato" class="btn btn-outline">
+                            <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                            Entre em Contato
+                        </a>
                     </div>
                 </div>
+
                 <div class="hero-image">
-                    <img src="assets/images/hero-health.jpg" alt="Profissionais de saúde utilizando tecnologia digital moderna">
+                    <img
+                        src="assets/images/hero-health.jpg"
+                        alt="Profissionais de saúde utilizando tecnologia digital"
+                        fetchpriority="high">
                 </div>
             </div>
         </section>
 
-        <!-- Sobre o Projeto -->
+        <!-- Sobre -->
         <section id="sobre" class="section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Sobre o Projeto</h2>
-                    <p>Conheça nossa origem, motivação e compromisso com a saúde digital</p>
+                    <h2>Sobre o <span class="fire-text">Projeto</span></h2>
+                    <p>Conheça a proposta e o compromisso com a transformação digital na saúde.</p>
+                    <span class="title-line"></span>
                 </div>
+
                 <div class="about-grid">
                     <div class="about-text">
                         <h3>Transformando o Futuro do Cuidado</h3>
-                        <p>Este projeto institucional nasce da necessidade de integrar soluções tecnológicas avançadas ao ecossistema de saúde, promovendo um atendimento mais ágil, seguro e humanizado.</p>
-                        <p><strong>Contexto e Motivação:</strong> Buscamos aproximar pacientes, profissionais e gestores por meio de ferramentas digitais acessíveis, transparentes e focadas na melhoria contínua dos processos clínicos e de gestão.</p>
-                        <p><strong>Público-alvo:</strong> Profissionais da saúde, pesquisadores, gestores públicos e privados, estudantes e cidadãos interessados em inovação em saúde.</p>
+
+                        <p>
+                            Este projeto busca explorar como soluções tecnológicas
+                            podem contribuir para a evolução dos serviços de saúde,
+                            aproximando pessoas, conhecimento científico e inovação.
+                        </p>
+
+                        <p>
+                            <strong>Contexto e motivação:</strong>
+                            promover a reflexão e o desenvolvimento de ideias que
+                            possam tornar os processos de saúde mais acessíveis,
+                            eficientes, seguros e humanizados.
+                        </p>
+
+                        <p>
+                            <strong>Público-alvo:</strong>
+                            profissionais da saúde, pesquisadores, gestores,
+                            estudantes e pessoas interessadas em tecnologia
+                            aplicada à saúde.
+                        </p>
+
+                        <p>
+                            <strong class="fire-text">O futuro da saúde começa com boas ideias!</strong>
+                        </p>
                     </div>
+
                     <div class="about-card-info">
                         <div class="info-box">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <h4>Inovação Responsiva</h4>
-                            <p>Compromisso com a ética, segurança de dados e rigor científico.</p>
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                            <h4>Inovação Responsável</h4>
+                            <p>Ética, privacidade, segurança da informação e valorização do conhecimento científico.</p>
                         </div>
+
                         <div class="info-box">
-                            <i class="fa-solid fa-users"></i>
-                            <h4>Foco Humano</h4>
-                            <p>A tecnologia como meio para valorizar a relação entre médico e paciente.</p>
+                            <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            <h4>Cuidado Humanizado</h4>
+                            <p>A tecnologia como ferramenta de apoio às pessoas e aos profissionais de saúde.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tecnologia e Inovação -->
+        <!-- Tecnologia e inovação -->
         <section id="inovacao" class="section bg-light">
             <div class="container">
                 <div class="section-title">
-                    <h2>Tecnologia e Inovação</h2>
-                    <p>Possibilidades de aplicação tecnológica propostas em nossa iniciativa</p>
+                    <h2>Tecnologia e <span class="fire-text">Inovação</span></h2>
+                    <p>Conheça algumas áreas que podem contribuir para transformar o cuidado em saúde.</p>
+                    <span class="title-line"></span>
                 </div>
+
                 <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+                    <article class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-laptop-medical" aria-hidden="true"></i>
+                        </div>
                         <h3>Telemedicina</h3>
-                        <p>Atendimento digital e remoto para ampliar o acesso à orientação médica especializada com comodidade e segurança.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                        <p>Recursos digitais para facilitar consultas, orientações e acompanhamento remoto, conforme as normas aplicáveis.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                        </div>
                         <h3>Inteligência Artificial</h3>
-                        <p>Apoio à decisão clínica, análise preditiva e otimização de diagnósticos por meio de algoritmos avançados.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fa-solid fa-file-medical"></i></div>
+                        <p>Ferramentas computacionais que podem apoiar a análise de informações e auxiliar profissionais em suas decisões.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-file-medical" aria-hidden="true"></i>
+                        </div>
                         <h3>Prontuários Eletrônicos</h3>
-                        <p>Gestão integrada e segura de informações clínicas para histórico unificado do paciente.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <p>Organização digital de informações clínicas com atenção à confidencialidade, à integridade e ao controle de acesso.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                        </div>
                         <h3>Monitoramento Remoto</h3>
-                        <p>Acompanhamento contínuo de sinais vitais por dispositivos conectados para prevenção proativa.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <p>Dispositivos conectados que podem auxiliar no acompanhamento de parâmetros de saúde quando utilizados adequadamente.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
                         <h3>Educação em Saúde</h3>
-                        <p>Plataformas interativas voltadas à disseminação de conhecimento preventivo e hábitos saudáveis.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <p>Conteúdos e experiências digitais para estimular a prevenção, a informação de qualidade e hábitos saudáveis.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                        </div>
                         <h3>Análise de Dados</h3>
-                        <p>Processamento de grandes volumes de dados (Big Data) em saúde para planejar políticas públicas eficazes.</p>
-                    </div>
+                        <p>Uso responsável de dados para compreender necessidades, apoiar o planejamento e avaliar iniciativas de saúde.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Objetivos e Benefícios -->
+        <!-- Faixa de destaque -->
+        <section class="highlight-band" aria-label="Mensagem de destaque">
+            <h2>
+                <i class="fa-solid fa-fire fire-text" aria-hidden="true"></i>
+                Ideias que acendem o futuro da saúde!
+            </h2>
+            <p>
+                A inovação ganha força quando ciência, responsabilidade e
+                tecnologia trabalham juntas para colocar as pessoas no centro
+                do cuidado.
+            </p>
+        </section>
+
+        <!-- Objetivos -->
         <section id="objetivos" class="section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Objetivos e Benefícios</h2>
-                    <p>Nossas metas estratégicas e os impactos esperados para a sociedade</p>
+                    <h2>Objetivos e <span class="fire-text">Benefícios</span></h2>
+                    <p>Diretrizes para orientar a proposta e seus impactos esperados.</p>
+                    <span class="title-line"></span>
                 </div>
+
                 <div class="objectives-grid">
-                    <div class="obj-box">
-                        <h3><i class="fa-solid fa-bullseye"></i> Objetivo Geral</h3>
-                        <p>Fomentar o ecossistema de inovação em saúde através de ferramentas digitais modernas, promovendo eficiência operacional, ampliação do acesso e melhoria na qualidade de vida dos cidadãos.</p>
-                    </div>
-                    <div class="obj-box">
-                        <h3><i class="fa-solid fa-list-check"></i> Objetivos Específicos</h3>
+                    <article class="obj-box">
+                        <h3><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Objetivo Geral</h3>
+                        <p>
+                            Explorar possibilidades de inovação tecnológica
+                            capazes de contribuir para a qualidade, a
+                            acessibilidade e a eficiência dos serviços de saúde.
+                        </p>
+                    </article>
+
+                    <article class="obj-box">
+                        <h3><i class="fa-solid fa-list-check" aria-hidden="true"></i> Objetivos Específicos</h3>
                         <ul>
-                            <li>Mapear demandas e gargalos nos serviços tradicionais de atendimento.</li>
-                            <li>Propor soluções tecnológicas escaláveis e adaptadas à realidade local.</li>
-                            <li>Estimular a capacitação digital de equipes multiprofissionais.</li>
+                            <li>Identificar desafios e oportunidades na área da saúde.</li>
+                            <li>Investigar soluções digitais adequadas às necessidades identificadas.</li>
+                            <li>Estimular a educação e a capacitação tecnológica.</li>
+                            <li>Valorizar a privacidade, a ética e a segurança.</li>
                         </ul>
-                    </div>
-                    <div class="obj-box">
-                        <h3><i class="fa-solid fa-star"></i> Benefícios Esperados</h3>
+                    </article>
+
+                    <article class="obj-box">
+                        <h3><i class="fa-solid fa-star" aria-hidden="true"></i> Benefícios Esperados</h3>
                         <ul>
-                            <li>Ampliação do acesso a serviços de saúde especializados.</li>
-                            <li>Maior agilidade e assertividade nos processos clínicos.</li>
-                            <li>Humanização do atendimento mediada por recursos tecnológicos eficientes.</li>
+                            <li>Maior disseminação de informações de qualidade.</li>
+                            <li>Estímulo à colaboração entre áreas do conhecimento.</li>
+                            <li>Novas possibilidades de acesso e organização do cuidado.</li>
+                            <li>Incentivo à inovação responsável.</li>
                         </ul>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Galeria de Imagens -->
+        <!-- Galeria -->
         <section id="galeria" class="section bg-light">
             <div class="container">
                 <div class="section-title">
-                    <h2>Galeria</h2>
-                    <p>Registros visuais e conceitos de saúde digital e inovação</p>
+                    <h2>Galeria de <span class="fire-text">Inovação</span></h2>
+                    <p>Imagens conceituais sobre tecnologia, pesquisa e transformação digital na saúde.</p>
+                    <span class="title-line"></span>
                 </div>
+
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="assets/images/telehealth.jpg" alt="Consulta médica remota por telemedicina">
+                    <article class="gallery-item">
+                        <img
+                            src="assets/images/telehealth.jpg"
+                            alt="Profissional realizando atendimento por telemedicina"
+                            loading="lazy">
                         <div class="gallery-caption">Telemedicina e Atendimento Remoto</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="assets/images/ai-health.jpg" alt="Análise de dados de saúde em telas digitais">
-                        <div class="gallery-caption">Inteligência Artificial e Análise de Dados</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="assets/images/monitoring.jpg" alt="Equipamentos modernos de monitoramento hospitalar">
-                        <div class="gallery-caption">Tecnologia Médica Avançada</div>
-                    </div>
+                    </article>
+
+                    <article class="gallery-item">
+                        <img
+                            src="assets/images/ai-health.jpg"
+                            alt="Tecnologia digital utilizada para análise de dados em saúde"
+                            loading="lazy">
+                        <div class="gallery-caption">Inteligência Artificial e Dados</div>
+                    </article>
+
+                    <article class="gallery-item">
+                        <img
+                            src="assets/images/monitoring.jpg"
+                            alt="Equipamentos tecnológicos de monitoramento de saúde"
+                            loading="lazy">
+                        <div class="gallery-caption">Tecnologia Médica e Monitoramento</div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Formulário de Contato Integrado ao WhatsApp -->
+        <!-- Contato -->
         <section id="contato" class="section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Contato</h2>
-                    <p>Fale conosco através do formulário integrado ao WhatsApp</p>
+                    <h2>Entre em <span class="fire-text">Contato</span></h2>
+                    <p>Envie sua mensagem e inicie uma conversa pelo WhatsApp.</p>
+                    <span class="title-line"></span>
                 </div>
+
                 <div class="contact-wrapper">
                     <form id="whatsapp-form" class="contact-form">
                         <div class="form-group">
-                            <label for="nome">Nome Completo *</label>
-                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                            <label for="nome">Nome completo *</label>
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                autocomplete="name"
+                                maxlength="120"
+                                required
+                                placeholder="Digite seu nome completo">
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="telefone">Telefone / WhatsApp</label>
-                                <input type="tel" id="telefone" name="telefone" placeholder="(92) 99999-9999">
+                                <input
+                                    type="tel"
+                                    id="telefone"
+                                    name="telefone"
+                                    autocomplete="tel"
+                                    maxlength="30"
+                                    placeholder="(92) 99999-9999">
                             </div>
+
                             <div class="form-group">
-                                <label for="email">E-mail (Opcional)</label>
-                                <input type="email" id="email" name="email" placeholder="seu@email.com">
+                                <label for="email">E-mail (opcional)</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    autocomplete="email"
+                                    maxlength="150"
+                                    placeholder="seu@email.com">
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="instituicao">Instituição ou Organização (Opcional)</label>
-                            <input type="text" id="instituicao" name="instituicao" placeholder="Empresa, Universidade ou Órgão">
+                            <label for="instituicao">Instituição ou organização (opcional)</label>
+                            <input
+                                type="text"
+                                id="instituicao"
+                                name="instituicao"
+                                maxlength="150"
+                                placeholder="Empresa, universidade ou órgão">
                         </div>
+
                         <div class="form-group">
-                            <label for="assunto">Assunto do Contato *</label>
+                            <label for="assunto">Assunto do contato *</label>
                             <select id="assunto" name="assunto" required>
                                 <option value="">Selecione o assunto</option>
-                                <option value="Parceria">Parceria Institucional</option>
-                                <option value="Dúvida sobre o Projeto">Dúvida sobre o Projeto</option>
-                                <option value="Sugestão">Sugestão de Melhoria</option>
-                                <option value="Outro">Outro Assunto</option>
+                                <option value="Parceria institucional">Parceria institucional</option>
+                                <option value="Dúvida sobre o projeto">Dúvida sobre o projeto</option>
+                                <option value="Sugestão de melhoria">Sugestão de melhoria</option>
+                                <option value="Pesquisa ou colaboração acadêmica">Pesquisa ou colaboração acadêmica</option>
+                                <option value="Outro assunto">Outro assunto</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="mensagem">Mensagem *</label>
-                            <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                            <textarea
+                                id="mensagem"
+                                name="mensagem"
+                                rows="4"
+                                maxlength="3000"
+                                required
+                                placeholder="Escreva sua mensagem aqui..."></textarea>
                         </div>
+
                         <div class="form-group checkbox-group">
-                            <input type="checkbox" id="consentimento" required>
-                            <label for="consentimento">Concordo em utilizar meus dados preenchidos para iniciar a conversa via WhatsApp.</label>
+                            <input type="checkbox" id="consentimento" name="consentimento" required>
+                            <label for="consentimento">
+                                Concordo em utilizar os dados informados para preparar
+                                e iniciar uma conversa pelo WhatsApp.
+                            </label>
                         </div>
-                        
+
                         <div class="privacy-notice">
-                            <p><i class="fa-solid fa-lock"></i> <strong>Nota de Privacidade:</strong> Os dados inseridos serão utilizados exclusivamente para preparar a mensagem de contato. Evite solicitar informações clínicas, diagnósticos, exames ou outros dados sensíveis de saúde neste formulário público.</p>
+                            <p>
+                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                <strong>Privacidade:</strong>
+                                este formulário não armazena os dados em um banco
+                                de dados. As informações serão incluídas na mensagem
+                                preparada para o WhatsApp. Evite informar diagnósticos,
+                                exames ou outros dados sensíveis de saúde.
+                            </p>
                         </div>
 
                         <button type="submit" class="btn btn-whatsapp">
-                            <i class="fa-brands fa-whatsapp"></i> Enviar mensagem pelo WhatsApp
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                            Enviar mensagem pelo WhatsApp
                         </button>
                     </form>
                 </div>
@@ -792,66 +1323,96 @@
     <footer>
         <div class="container footer-container">
             <div class="footer-info">
-                <h3>Tecnologia e Inovação em Saúde</h3>
-                <p>Iniciativa dedicada a promover a transformação digital no setor da saúde com foco na qualidade de vida e acessibilidade.</p>
+                <h3>
+                    <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                    Tecnologia e Inovação em Saúde
+                </h3>
+                <p>
+                    Uma iniciativa voltada à exploração de tecnologias,
+                    conhecimento científico e ideias inovadoras para contribuir
+                    com a evolução do cuidado em saúde.
+                </p>
             </div>
+
             <div class="footer-links">
                 <h4>Navegação</h4>
                 <ul>
                     <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#sobre">Sobre o Projeto</a></li>
                     <li><a href="#inovacao">Inovação</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
+
             <div class="footer-contact">
                 <h4>Contato Direto</h4>
-                <p><i class="fa-solid fa-phone"></i> +55 (92) 99335-1939</p>
-                <p><i class="fa-solid fa-shield-halved"></i> Aviso de Privacidade: Dados seguros e protegidos.</p>
+                <p>
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    +55 (92) 99335-1939
+                </p>
+                <p>
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    Respeito à privacidade e ao uso responsável das informações.
+                </p>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> Tecnologia e Inovação em Saúde. Todos os direitos reservados.</p>
+            <p>
+                &copy; <span id="current-year"></span>
+                Tecnologia e Inovação em Saúde. Todos os direitos reservados.
+            </p>
         </div>
     </footer>
 
     <script>
-        // Menu Responsivo para Dispositivos Móveis
+        // Menu responsivo
         const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.querySelector('.nav-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const menuIcon = mobileMenu.querySelector('i');
+
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+            mobileMenu.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-label', 'Abrir menu');
+        }
 
         mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileMenu.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+            const isOpen = navMenu.classList.toggle('active');
+
+            menuIcon.classList.toggle('fa-bars', !isOpen);
+            menuIcon.classList.toggle('fa-xmark', isOpen);
+
+            mobileMenu.setAttribute('aria-expanded', String(isOpen));
+            mobileMenu.setAttribute(
+                'aria-label',
+                isOpen ? 'Fechar menu' : 'Abrir menu'
+            );
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeMenu();
             }
         });
 
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileMenu.querySelector('i');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            });
-        });
+        // Atualizar ano automaticamente
+        document.getElementById('current-year').textContent =
+            new Date().getFullYear();
 
-        // Atualizar ano automaticamente no rodapé
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Validação e Integração do Formulário com o WhatsApp
+        // Formulário integrado ao WhatsApp
         const whatsappForm = document.getElementById('whatsapp-form');
 
-        whatsappForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        whatsappForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            // Obter valores dos campos
             const nome = document.getElementById('nome').value.trim();
             const telefone = document.getElementById('telefone').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -860,36 +1421,50 @@
             const mensagem = document.getElementById('mensagem').value.trim();
             const consentimento = document.getElementById('consentimento').checked;
 
-            // Validação básica
             if (!nome || !assunto || !mensagem) {
-                alert('Por favor, preencha todos os campos obrigatórios (*).');
+                alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
 
             if (!consentimento) {
-                alert('Você precisa concordar com o termo de privacidade para continuar.');
+                alert('É necessário concordar com o termo de privacidade.');
                 return;
             }
 
-            // Montar texto da mensagem para o WhatsApp
-            let textoMensagem = `*Contato via Site - Tecnologia e Inovação em Saúde*\n\n`;
-            textoMensagem += `*Nome:* ${nome}\n`;
-            if (telefone) textoMensagem += `*Telefone:* ${telefone}\n`;
-            if (email) textoMensagem += `*E-mail:* ${email}\n`;
-            if (instituicao) textoMensagem += `*Instituição:* ${instituicao}\n`;
-            textoMensagem += `*Assunto:* ${assunto}\n\n`;
-            textoMensagem += `*Mensagem:*\n${mensagem}`;
+            const linhas = [
+                '*Contato pelo site - Tecnologia e Inovação em Saúde*',
+                '',
+                '*Nome:* ' + nome
+            ];
 
-            // Codificar a mensagem para URL
-            const mensagemCodificada = encodeURIComponent(textoMensagem);
-            
-            // Número de destino solicitado: +55 92 99335-1939
+            if (telefone) {
+                linhas.push('*Telefone:* ' + telefone);
+            }
+
+            if (email) {
+                linhas.push('*E-mail:* ' + email);
+            }
+
+            if (instituicao) {
+                linhas.push('*Instituição:* ' + instituicao);
+            }
+
+            linhas.push(
+                '*Assunto:* ' + assunto,
+                '',
+                '*Mensagem:*',
+                mensagem
+            );
+
+            const textoMensagem = linhas.join('\n');
             const numeroDestino = '5592993351939';
-            
-            // Abrir o link do WhatsApp
-            const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${mensagemCodificada}`;
-            
-            window.open(urlWhatsApp, '_blank');
+
+            const urlWhatsApp =
+                'https://wa.me/' + numeroDestino +
+                '?text=' + encodeURIComponent(textoMensagem);
+
+            // O usuário revisa e envia a mensagem no WhatsApp.
+            window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
         });
     </script>
 </body>
